@@ -29,7 +29,7 @@ const UserMenu = () => {
             <Avatar />
         </div>
       </div>
-      {isOpen && (
+      {isOpen && ( 
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-1/3 lg:w-1/6 bg-white overflow-hidden right-0 top-12 mt-6 text-sm">
             <div className="flex flex-col cursor-pointer">
                 <>
