@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
-// import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -12,6 +11,7 @@ import Modal from "./Modal";
 import Button from "../Button";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -52,16 +52,16 @@ const RegisterModal = () => {
     <div className="flex flex-col gap-4 lg:gap-2">
       <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
       <Input
-        id="email"
-        label="Email"
+        id="name"
+        label="Name"
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id="name"
-        label="Name"
+        id="email"
+        label="Email"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -81,45 +81,45 @@ const RegisterModal = () => {
 
   const footerContent = (
     <div>
-    <div className="flex flex-col md:text-sm lg:flex-row gap-3 lg:gap-1 mt-3">
-      <hr />
-      <Button
-        outline
-        label="Continue with Google"
-        icon={FcGoogle}
-        onClick={() => {}}
-      />
-      <Button
-        outline
-        label="Continue with Github"
-        icon={AiFillGithub}
-        onClick={() => {}}
-      />
-    </div>
-          <div
-          className="
+      <div className="flex flex-col md:text-sm lg:flex-row gap-3 lg:gap-1 mt-3">
+        <hr />
+        <Button
+          outline
+          label="Continue with Google"
+          icon={FcGoogle}
+          onClick={() => signIn("google")}
+        />
+        <Button
+          outline
+          label="Continue with Github"
+          icon={AiFillGithub}
+          onClick={() => signIn("github")}
+        />
+      </div>
+      <div
+        className="
             text-neutral-500 
             text-center 
             mt-4 
             font-light
           "
-        >
-          <p>
-            Already have an account?
-            <span
-              onClick={onToggle}
-              className="
+      >
+        <p>
+          Already have an account?
+          <span
+            onClick={onToggle}
+            className="
                 text-neutral-800
                 cursor-pointer 
                 hover:underline
               "
-            >
-              {" "}
-              Log in
-            </span>
-          </p>
-        </div>
-        </div>
+          >
+            {" "}
+            Log in
+          </span>
+        </p>
+      </div>
+    </div>
   );
 
   return (
