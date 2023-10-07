@@ -9,7 +9,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import Link from "next/link";
-import { SignOutButton, useUser } from "@clerk/nextjs";
+import { SignInButton, SignOutButton, SignUpButton, useUser } from "@clerk/nextjs";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -63,12 +63,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               </>
             ) : (
               <>
-                <Link href="sign-in">
+                <SignInButton>
                   <MenuItem onClick={() => {}} label="Login" />
-                </Link>
-                <Link href="sign-up">
+                </SignInButton>
+                <SignUpButton>
                   <MenuItem onClick={() => {}} label="Signup" />
-                </Link>
+                </SignUpButton>
               </>
             )}
           </div>
