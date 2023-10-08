@@ -14,6 +14,7 @@ import {
   SignInButton,
   SignOutButton,
   SignUpButton,
+  SignedIn,
   useUser,
 } from "@clerk/nextjs";
 import RentModal from "../modals/RentModal";
@@ -37,14 +38,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     setIsOpen((value) => !value);
   }, []);
 
-  const onRent = useCallback(() => {
-    // if (!isSignedIn) {
-    //   return alert("Please login!");
-    // } else
-    {
+  const onRent = () => {
+    if (!isSignedIn) {
+      return alert("Please login!");
+    } else {
       rentModal.onOpen();
     }
-  }, [rentModal]);
+  };
 
   const { isSignedIn, user, isLoaded } = useUser();
 
