@@ -10,6 +10,7 @@ import getCurrentUser from "./actions/getCurrentUser";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import type { AppProps } from "next/app";
+import RentModal from "./components/modals/RentModal";
 
 const inter = Inter({ subsets: ["latin"] });
 const font = Nunito({ subsets: ["latin"] });
@@ -31,6 +32,7 @@ export default async function RootLayout({
       <html lang="en">
         <body className={font.className}>
           <ClientOnly>
+            <RentModal />
             <LoginModal />
             <RegisterModal />
             <Navbar currentUser={currentUser} />
